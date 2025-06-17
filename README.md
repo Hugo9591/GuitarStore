@@ -1,54 +1,37 @@
-# React + TypeScript + Vite
+# Tienda de Guitarras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web donde se pueden explorar varios modelos de guitarra, añadirlos a un carrito y comprar, toda la informacio de las guitarras esta en un archivo aparte almacenado en un 
+array de objetos, al agregar una guitarra al carrito se guarda en localStorage, de modo que no desaparece la informacion al cerrar el navegador.
 
-Currently, two official plugins are available:
+## Funciones destacadas
+- Guitarras: lista dinámica con foto, nombre, descripción y precio de cada guitarra.  
+- Carrito persistente 
+  - Agregar / quitar unidades desde el propio carrito.  
+  - Actualiza el total gracias a un `useState` (sin recargar la página).  
+  - Quitar un solo artículo con el icono 'x' o vaciar todo el carrito con un solo clic con un boton en la parte inferior del carrito.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías
+React: Interfaz y lógica
+Vite: Empaquetado ultrarrápido
+TypeScript: Tipado estático
+CSS (Tailwind):E stilos
 
-## Expanding the ESLint configuration
+## Instalación rápida
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+git clone https://github.com/Hugo9591/GuitarStore.git
+cd tu-repo
+npm install       # o pnpm install / yarn
+npm run dev
+Luego abre http://localhost:5173
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Cómo funciona
+Al pulsar “Añadir al carrito”, se guarda { foto, nombre, precio y cantidad }.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Ese estado se sincroniza con localStorage usando un useEffect.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Cada cambio recalcula el total, si se agregan mas guitarras o si  se modifica la cantidad del prodcuto.
+
+Si el usuario pulsa 'x' se elimina el elemento del carrito.
+
+“Vaciar carrito” sencillamente limpia el array y el storage.
