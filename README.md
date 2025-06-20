@@ -11,10 +11,10 @@ array de objetos, al agregar una guitarra al carrito se guarda en localStorage, 
   - Quitar un solo artículo con el icono 'x' o vaciar todo el carrito con un solo clic con un boton en la parte inferior del carrito.  
 
 ## Tecnologías
-React: Interfaz y lógica
-Vite: Empaquetado ultrarrápido
-TypeScript: Tipado estático
-CSS (Tailwind):E stilos
+- React: Interfaz y lógica
+- Vite: Empaquetado ultrarrápido
+- TypeScript: Tipado estático
+- CSS (Tailwind):E stilos
 
 ## Instalación rápida
 
